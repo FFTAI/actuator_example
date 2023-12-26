@@ -2,7 +2,16 @@ import fi_fsa
 import time
 
 server_ip_list = []
-server_ip_list = ["192.168.137.164"]
+server_ip_list = ["192.168.137.10", 
+                  "192.168.137.11", 
+                  "192.168.137.12", 
+                  "192.168.137.13", 
+                  "192.168.137.14", 
+                  "192.168.137.30", 
+                  "192.168.137.31", 
+                  "192.168.137.32", 
+                  "192.168.137.33", 
+                  "192.168.137.34", ]
 class SpeedParamList :
     #         相对电流环分频系数| 前馈增益 |   KP   |   KI       |  Wc   |   Wo   |   B0   |0PI/1LADRC |SPD_FC|带宽  #
     MOTOR_NULL = [     2,          0.0,    0.1   ,  0.01      ,   0   ,   0    ,    0    ,   0      , 5000 , 600  ]
@@ -31,9 +40,9 @@ def main():
         # set the communication configuration of all FAS
         for i in range(len(server_ip_list)):
             dict = { #36
-                'control_position_kp': 0.5,
-                'control_velocity_kp': FSA_Type[2],
-                'control_velocity_ki': FSA_Type[3],
+                'control_position_kp': 0.36,
+                'control_velocity_kp': 0.042,
+                'control_velocity_ki': 0,
                 'control_current_kp': 0.0,  # not work for now
                 'control_current_ki': 0.0,  # not work for now
             }
@@ -64,8 +73,8 @@ def main():
         # print('\n')
 
         # reboot all FAS
-        for i in range(len(server_ip_list)):
-            fi_fsa.reboot(server_ip_list[i])
+        # for i in range(len(server_ip_list)):
+        #     fi_fsa.reboot(server_ip_list[i])
 
 
 if __name__ == '__main__':
