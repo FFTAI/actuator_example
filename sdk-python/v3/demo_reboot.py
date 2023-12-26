@@ -1,11 +1,11 @@
 import fi_fsa
 import time
 
-server_ip_list = ["192.168.137.33"]
+server_ip_list = []
 
 
 def main():
-    # server_ip_list = fi_fsa.broadcast_func()
+    server_ip_list = fi_fsa.broadcast_func()
 
     if server_ip_list:
 
